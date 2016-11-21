@@ -22,7 +22,7 @@ function Mostrar()
 
 }//FIN DE LA FUNCIÓN
 
-function MiRandom(var Inicial, var Maximo)
+function MiRandom(Inicial, Maximo)
 {// devuelve un Nro random entre el valor Inicial y el Maximo
-	return=parseInt((Math.random() * Maximo) + Inicial );
-}
+	return parseInt((Math.random() * Maximo) + Inicial );
+} // fin MiRandom
