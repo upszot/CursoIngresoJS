@@ -23,6 +23,11 @@ function CalcularPrecio ()
 	var Cantidad= document.getElementById('Cantidad').value;
 	var Marca= document.getElementById('Marca').value;
 
+	if(isNaN(Cantidad) || (Cantidad < 1))
+	{
+		alert("Ingrese un Numero, el mismo debe ser mayor a 1.");
+	}
+
 	var PorcentajeDescuento=0;
 	var Precio = 35;
 	var PrecioConDescuento;
@@ -88,7 +93,7 @@ function CalcularPrecio ()
 
 
  	//Precio total de la compra sin descuentos
-	Precio=Precio * Cantidad
+	Precio=Precio * Cantidad;
 	
 	//Precio con descuento
 	PrecioConDescuento= Precio - (Precio * PorcentajeDescuento / 100);
