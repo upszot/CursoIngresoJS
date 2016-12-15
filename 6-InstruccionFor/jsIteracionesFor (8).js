@@ -1,6 +1,8 @@
 function Mostrar()
 {
 
+	inicio();
+
 
 
 
