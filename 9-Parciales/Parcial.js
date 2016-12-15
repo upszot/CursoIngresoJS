@@ -3,7 +3,7 @@
 function inicio()
 {	
 	var Nro;
-	Nro=prompt("ingrese Nro de ejercicio a probar: ");
+	Nro=parseInt(prompt("ingrese Nro de ejercicio a probar: "));
 	switch(Nro)
 	{
 		case 1:
@@ -24,6 +24,8 @@ function inicio()
 		case 6:
 			Nivel_3_6();
 			break;
+		case 7:
+			Nivel_3_7();
 	}
 
 }//fin inicio
@@ -122,10 +124,10 @@ informar por alert “es fin de semana” de lo contrario informar por alert “
 // --------------------------- Nivel 3 -----------------------------
 
 function Nivel_3_6()
-{
-	var importe[24];
+{	
+	var importe=[];
 	var dia;
-	var Importe_Mayor_Menor[2];
+	var Importe_Mayor_Menor=[];
 
 	// posicion 0 para  el mayor y posicion 1 para  el menor
 	Importe_Mayor_Menor[0]=0;
@@ -153,11 +155,11 @@ function valida_impote()
 	return importe;
 }
 
-function BuscarDiaImporte( importe[])
+function BuscarDiaImporte(importe)
 {
 	var dia_del_importe_mayor=0;
 	var dia_del_importe_menor=0;
-	var aux[2];
+	var aux=[];
 	//aux lo voy a usar en la posicion 0 para retornar el mayor y posicion 1 para retornar el menor
 	aux[0]=0;
 	aux[1]=0;
@@ -179,14 +181,90 @@ function BuscarDiaImporte( importe[])
 	aux[1]=dia_del_importe_menor;
 	return aux;
 }
-
 /*
-
 Nivel 3 (iteraciones – validaciones-máximos y mínimos)
 
 6- realizar el algoritmo que pida el importe de las ventas (validar que sea mayor a 0,”cero”) de los 24 días
 hábiles del mes por prompt (una por día), e informar cual fue el mayor importe y cuál fue el menor
 importe de venta.
+*/
+
+function Nivel_3_7()
+{
+	var ListaAlumnos=[];
+	var cantidad_alumnos=3;
+
+	for(var i =0 ; i< cantidad_alumnos; i++)
+	{
+		ListaAlumnos[i]=Valida_Alumnos();
+	}//for(var i =0 ; i< cantidad_alumnos; i++)
+	
+	alert("El Promedio de las Notas totales es: " +  PromedioNotas(ListaAlumnos, cantidad_alumnos) );
+	alert("La menor nota es: " +  El_burro(ListaAlumnos, cantidad_alumnos) );
+	alert("Cantidad de varones con nota mayor que 5: " +  Cantidad_Varones_Nota_Mayor6(ListaAlumnos, cantidad_alumnos) );
+	
+}
+
+function Valida_Alumnos()
+{
+	var Nota;
+	var Sexo;
+	
+	var Alumno ={};
+	do
+		Nota=parseInt(prompt("Ingrese la nota del alumno (entre 0 y 10): "));
+	while((Nota < 0) || (Nota >10))
+
+	do
+		Sexo=prompt("Ingrese el Sexo del alumno (F/M): ");
+	while((Sexo !='F') && (Sexo !='M'))
+
+	Alumno.Nota=Nota;
+	Alumno.Sexo=Sexo;
+	
+	return Alumno;
+}
+
+function PromedioNotas(Listado,Cantidad)
+{
+	var AcumuladorNotas=0;
+	var Promedio;
+	for(var i=0;i<Cantidad;i++)
+	{
+		AcumuladorNotas+=Listado[i].Nota;
+	}
+	Promedio=AcumuladorNotas/Cantidad;
+
+	return Promedio
+}
+
+function El_burro(Listado,Cantidad)
+{
+	var MenorNota;
+	for(var i=0;i<Cantidad;i++)
+	{
+		if((Listado[i].Nota < MenorNota) || (i==0))
+		{
+			MenorNota=Listado[i].Nota;
+		}		
+	}
+	return MenorNota;
+}
+function Cantidad_Varones_Nota_Mayor6(Listado,Cantidad)
+{
+	var Contador=0;
+	for(var i=0;i<Cantidad;i++)
+	{
+		if((Listado[i].Nota >=6) && (Listado[i].Sexo == 'M'))
+		{
+			Contador++;
+		}		
+	}
+	return Contador;
+}
+/*
+
+Nivel 3 (iteraciones – validaciones-máximos y mínimos)
 
 7- realizar el algoritmo que permita el ingreso por prompt de las notas (validar entre 0 y 10) y el sexo
 (validar el sexo “f” o “m”) de 100 alumnos, informar por alert:
